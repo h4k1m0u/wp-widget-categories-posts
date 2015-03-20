@@ -11,6 +11,9 @@ Author URI: http://author.url
 class Categories_Posts_Map_Widget extends WP_Widget {
     public function __construct() {
         // init widget
+        wp_enqueue_style('categories-posts.css', plugins_url('css/categories-posts.css', __FILE__));
+        wp_enqueue_script('categories-posts.js', plugins_url('js/categories-posts.js', __FILE__), array('jquery'));
+
         parent::WP_Widget(
             'categories-posts',
             'Categories Posts',
@@ -37,14 +40,16 @@ class Categories_Posts_Map_Widget extends WP_Widget {
                     foreach ($categories as $category) {
                     ?>
                         <li class="category">
+                            <a href="#" title="Expand/Retract" class="toggle">+</a>
                             <a href="<?php echo esc_url(get_category_link($category->cat_ID)); ?>" title="<?php echo $category->name; ?>">
                                 <?php echo $category->name; ?> (<?php echo $category->count; ?>)
                             </a>
-                            <ul>
+                            <ul class="posts">
                                 <?php
                                     // get posts inside category
                                     $posts = get_posts(array(
-                                        'category' => $category->cat_ID
+                                        'category' => $category->cat_ID,
+                                        'posts_per_page' => 3,
                                     ));
 
                                     // loop over posts
