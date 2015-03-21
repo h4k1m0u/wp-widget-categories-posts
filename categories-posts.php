@@ -27,7 +27,7 @@ class Categories_Posts_Map_Widget extends WP_Widget {
     public function widget($args, $instance) {
     ?>
     <aside id="categories-posts" class="widget widget_categories_posts">
-        <h1 class="widget-title">Categories Posts</h1>
+        <h1 class="widget-title">Categories</h1>
         <div>
             <ul class="categories">
                 <?php
@@ -57,8 +57,8 @@ class Categories_Posts_Map_Widget extends WP_Widget {
                                     foreach ($posts as $post) {
                                     ?>
                                         <li class="post">
-                                            <a href="<?php echo esc_url(get_permalink($post->ID)); ?>" title="<?php echo $post->post_name; ?>">
-                                                <?php echo $post->post_name; ?>
+                                            <a href="<?php echo esc_url(get_permalink($post->ID)); ?>" title="<?php echo $post->post_title; ?>">
+                                                <?php echo $post->post_title; ?>
                                             </a>
                                         </li>
                                     <?php

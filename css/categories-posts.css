@@ -1,8 +1,16 @@
+#categories-posts > div {
+    margin: 0.5em 0;
+}
+
 #categories-posts .toggle:active,
 #categories-posts .toggle:focus,
 #categories-posts .toggle:hover {
     color: #fff;
     background: transparent;
+}
+
+#categories-posts li.category {
+    font-size: 0.75em;
 }
 
 #categories-posts li.post:before {
