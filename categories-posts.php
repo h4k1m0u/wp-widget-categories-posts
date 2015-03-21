@@ -40,17 +40,18 @@ class Categories_Posts_Map_Widget extends WP_Widget {
                     foreach ($categories as $category) {
                     ?>
                         <li class="category">
-                            <a href="#" title="Expand/Retract" class="toggle">+</a>
+                            <a href="javascript:void(0)" title="Expand/Retract" class="toggle">+</a>
                             <a href="<?php echo esc_url(get_category_link($category->cat_ID)); ?>" title="<?php echo $category->name; ?>">
                                 <?php echo $category->name; ?> (<?php echo $category->count; ?>)
                             </a>
                             <ul class="posts">
                                 <?php
                                     // get posts inside category
-                                    $posts = get_posts(array(
-                                        'category' => $category->cat_ID,
-                                        'posts_per_page' => 3,
-                                    ));
+                                    $posts = array();
+                                    if ($category->count > 0)
+                                        $posts = get_posts(array(
+                                            'category' => $category->cat_ID,
+                                        ));
 
                                     // loop over posts
                                     foreach ($posts as $post) {

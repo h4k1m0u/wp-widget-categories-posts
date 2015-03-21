@@ -1,3 +1,10 @@
+#categories-posts .toggle:active,
+#categories-posts .toggle:focus,
+#categories-posts .toggle:hover {
+    color: #fff;
+    background: transparent;
+}
+
 #categories-posts li.post:before {
     content: "|";
 }
