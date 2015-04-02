@@ -28,12 +28,13 @@ class Categories_Posts_Map_Widget extends WP_Widget {
     ?>
     <aside id="categories-posts" class="widget widget_categories_posts">
         <h1 class="widget-title">Categories</h1>
-        <div>
+        <nav>
             <ul class="categories">
                 <?php
                     // get categories
                     $categories = get_categories(array(
-                        'hide_empty' => false
+                        'orderby'   => 'count',
+                        'order'     => 'DESC'
                     ));
 
                     // loop over categories
@@ -50,7 +51,8 @@ class Categories_Posts_Map_Widget extends WP_Widget {
                                     $posts = array();
                                     if ($category->count > 0)
                                         $posts = get_posts(array(
-                                            'category' => $category->cat_ID,
+                                            'category'          => $category->cat_ID,
+                                            'posts_per_page'    => 3
                                         ));
 
                                     // loop over posts
@@ -63,6 +65,17 @@ class Categories_Posts_Map_Widget extends WP_Widget {
                                         </li>
                                     <?php
                                     }
+
+                                    // link to remaining hidden posts
+                                    if ($category->count > 3) {
+                                    ?>
+                                        <li class="post">
+                                            <a href="<?php echo esc_url(get_category_link($category->cat_ID)); ?>" title="<?php echo $category->name; ?>">
+                                                ...
+                                            </a>
+                                        </li>
+                                    <?php
+                                    }
                                 ?>
                             </ul>
                         </li>
@@ -70,7 +83,7 @@ class Categories_Posts_Map_Widget extends WP_Widget {
                     }
                 ?>
             </ul>
-        </div>
+        </nav>
     </aside>
     <?php
     }

@@ -1,4 +1,4 @@
-#categories-posts > div {
+#categories-posts > nav {
     margin: 0.5em 0;
 }
 
@@ -11,6 +11,9 @@
 
 #categories-posts li.post {
     font-size: 0.75em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #categories-posts li.post:before {
