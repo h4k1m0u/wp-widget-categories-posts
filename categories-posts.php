@@ -43,7 +43,10 @@ class Categories_Posts_Map_Widget extends WP_Widget {
                         <li class="category">
                             <a href="javascript:void(0)" title="Expand/Retract" class="toggle">+</a>
                             <a href="<?php echo esc_url(get_category_link($category->cat_ID)); ?>" title="<?php echo $category->name; ?>">
-                                <?php echo $category->name; ?> (<?php echo $category->count; ?>)
+                                <?php echo $category->name; ?>
+                                <span class="posts-count">
+                                    (<?php echo $category->count; ?>)
+                                </span>
                             </a>
                             <ul class="posts">
                                 <?php

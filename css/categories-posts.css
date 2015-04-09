@@ -9,6 +9,11 @@
     background: transparent;
 }
 
+#categories-posts li.category .posts-count {
+    color: #fff;
+    font-size: 0.75em;
+}
+
 #categories-posts li.post {
     font-size: 0.75em;
     overflow: hidden;
